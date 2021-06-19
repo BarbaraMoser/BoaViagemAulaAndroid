@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="fill_horizontal">
+
+            <EditText
+                android:id="@+id/nome_registro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:gravity="start"
+                android:background="#DFDCDC"
+                android:textColor="#959595"
+                android:padding="10dp"
+                android:hint="@string/nome"
+                android:inputType="text"
+                android:textColorHint="#959595" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="fill_horizontal">
+
+            <EditText
+                android:id="@+id/email_registro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:gravity="start"
+                android:background="#DFDCDC"
+                android:textColor="#959595"
+                android:padding="10dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#959595" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="fill_horizontal">
+
+            <EditText
+                android:id="@+id/password_registro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:gravity="start"
+                android:background="#DFDCDC"
+                android:textColor="#959595"
+                android:padding="10dp"
+                android:hint="@string/password"
+                android:inputType="text"
+                android:textColorHint="#959595" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="fill_horizontal">
+
+            <Button
+                android:id="@+id/registrar_usuario"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                app:backgroundTint="#51BD79"
+                android:onClick="salvar_usuario"
+                android:text="Salvar"/>
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

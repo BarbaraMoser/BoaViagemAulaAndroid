@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BoaViagem</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="registrar">Registrar</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="nome">Nome</string>
+</resources>
