@@ -3,29 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="30dp"
+    android:layout_margin="10dp"
     tools:context=".NovaViagem">
+
+    <TextView
+        android:id="@+id/id_usuario_nova_viagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/id_usuario_nova_viagem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"/>
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:layout_margin="10dp">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:gravity="fill_horizontal">
 
                 <EditText
@@ -33,14 +32,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:gravity="start"
                     android:background="#DFDCDC"
                     android:textColor="#0C0C0C"
                     android:padding="10dp"
                     android:hint="Destino"
                     android:inputType="text"
-                    android:textColorHint="#0C0C0C" />
+                    android:textColorHint="#0C0C0C"
+                    android:autofillHints="" />
             </TableRow>
 
             <TableRow
@@ -58,7 +58,7 @@
                     android:gravity="start"
                     android:background="#DFDCDC"
                     android:textColor="#959595"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:spinnerMode="dropdown"
                     android:popupBackground="#959595"
                     android:prompt="@string/tipo_viagem_prompt"
@@ -76,7 +76,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:gravity="start"
                     android:background="#DFDCDC"
                     android:textColor="#0C0C0C"
@@ -109,7 +109,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:gravity="start"
                     android:background="#DFDCDC"
                     android:textColor="#0C0C0C"
@@ -120,7 +120,7 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="fill_horizontal">
 
                 <DatePicker
@@ -142,14 +142,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:gravity="start"
                     android:background="#DFDCDC"
                     android:textColor="#0C0C0C"
                     android:padding="10dp"
                     android:hint="Orçamento"
                     android:inputType="numberDecimal"
-                    android:textColorHint="#0C0C0C" />
+                    android:textColorHint="#0C0C0C"
+                    android:autofillHints="" />
             </TableRow>
 
             <TableRow
@@ -164,8 +165,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textSize="25sp"
-                    android:onClick="salvar_nova_viagem"
                     android:text="Salvar"/>
+<!--                    android:onClick="salvar_nova_viagem"/>-->
             </TableRow>
         </TableLayout>
 

@@ -16,6 +16,10 @@ class NovoGasto : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_novo_gasto, container, false)
+        return inflater.inflate(
+            com.example.boaviagem.R.layout.activity_novo_gasto,
+            container,
+            false
+        )
     }
 }

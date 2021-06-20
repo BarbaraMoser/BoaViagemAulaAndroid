@@ -7,8 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.boaviagem.dao.UsuarioDao
 import com.example.boaviagem.daodestino.ViagemDao
 import com.example.boaviagem.model.Usuario
+import com.example.boaviagem.model.Viagem
 
-@Database(entities = arrayOf(Usuario::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Usuario::class, Viagem::class), version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun usuarioDao(): UsuarioDao

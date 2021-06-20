@@ -83,7 +83,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
-                app:backgroundTint="#51BD79"
+                app:backgroundTint="#93C8B8"
                 android:onClick="efetuar_login"
                 android:text="@string/login"/>
         </TableRow>
@@ -102,7 +102,7 @@
                 android:onClick="registrar_usuario"
                 android:text="@string/registrar"
                 android:textStyle="bold"
-                android:textColor="#51BD79"
+                android:textColor="#053C3C"
                 android:textSize="25sp"
                 android:gravity="center" />
         </TableRow>
