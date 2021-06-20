@@ -43,9 +43,9 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        fun registrar_usuario(view: View) {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
+    fun registrar_usuario(view: View) {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
 
     }
