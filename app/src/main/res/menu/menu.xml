@@ -9,8 +9,8 @@
         android:title="Nova Viagem"
         android:icon="@drawable/nova_viagem"/>
 
-    <item android:id="@+id/fragmento_novo_gasto"
-        android:title="Novo Custo"
-        android:icon="@drawable/novo_gasto"/>
+    <item
+        android:title="Ajuda"
+        android:icon="@drawable/ajuda"/>
 
 </menu>

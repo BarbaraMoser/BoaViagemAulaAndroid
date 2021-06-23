@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class NovaViagem : Fragment() {
+class NovaViagem(val usuario_id: String) : Fragment() {
 
     lateinit var viagemDao: ViagemDao
 
@@ -52,9 +52,7 @@ class NovaViagem : Fragment() {
 //            findViewById<EditText>(com.example.boaviagem.R.id.data_picker_partida).text.toString()
 //        val orcamento =
 //            findViewById<EditText>(com.example.boaviagem.R.id.orcamento_viagem).text.toString()
-//        val id_usuario =
-//            findViewById<EditText>(com.example.boaviagem.R.id.id_usuario_nova_viagem).text.toString()
-//        val viagem = Viagem(destino, tipo, data_chegada, data_partida, orcamento, id_usuario)
+//        val viagem = Viagem(destino, tipo, data_chegada, data_partida, orcamento, usuario_id)
 //
 //        GlobalScope.launch(Dispatchers.Main) {
 //            withContext(Dispatchers.IO) {

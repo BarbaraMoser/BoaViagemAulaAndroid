@@ -9,7 +9,8 @@ data class Gasto(
     val valor: Float,
     val data: String,
     val descricao: String,
-    val local: String
+    val local: String,
+    val id_viagem: Int
 ) {
 
     @PrimaryKey(autoGenerate = true)

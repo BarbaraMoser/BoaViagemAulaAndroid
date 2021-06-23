@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
     fun efetuar_login(view: View) {
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
+        val id = 1234
 
 //        GlobalScope.launch(Dispatchers.Main) {
 //            var usuario = withContext(Dispatchers.IO) {
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 //            }
 //        }
             Intent(this, FragmentMenu::class.java).apply {
-                putExtra("usuario", email);
+                putExtra("usuario", id);
                 startActivity(this)
             }
         }
@@ -48,4 +49,4 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    }
+}
