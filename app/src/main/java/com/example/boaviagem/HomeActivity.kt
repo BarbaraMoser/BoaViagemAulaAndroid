@@ -1,6 +1,6 @@
 package com.example.boaviagem
 
-import android.R
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,8 +39,8 @@ class HomeActivity(val usuario_id: String) : Fragment() {
 
             adapter.onItemClick = {
                 val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-                val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransacition()
-                fragmentTransaction.replace(R.id.novo_gasto_layout, NovoGasto(it.id)).commit()
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.layout.activity_novo_gasto, NovoGasto(it.id)).commit()
             }
         }
         return view

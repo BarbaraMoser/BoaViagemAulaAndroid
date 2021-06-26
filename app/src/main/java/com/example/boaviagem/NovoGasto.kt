@@ -41,12 +41,12 @@ class NovoGasto(val viagem_id: Int) : Fragment() {
     }
 
     fun salvar_novo_gasto(view: View) {
-        val tipo = findViewById<EditText>(com.example.boaviagem.R.id.spinner_tipo_gasto).text.toString()
-        val valor = findViewById<EditText>(com.example.boaviagem.R.id.valor).text.toString()
-        val data = findViewById<EditText>(com.example.boaviagem.R.id.data_picker_gasto).text.toString()
-        val descricao = findViewById<EditText>(com.example.boaviagem.R.id.descricao).text.toString()
-        val local = findViewById<EditText>(com.example.boaviagem.R.id.local_gasto).text.toString()
-        val gasto = Gasto(tipo, valor, data, descricao, local, viagem_id)
+        val tipo = view.findViewById<EditText>(com.example.boaviagem.R.id.spinner_tipo_gasto).text.toString()
+        val valor = view.findViewById<EditText>(com.example.boaviagem.R.id.valor).text.toString()
+        val data = view.findViewById<EditText>(com.example.boaviagem.R.id.data_picker_gasto).text.toString()
+        val descricao = view.findViewById<EditText>(com.example.boaviagem.R.id.descricao).text.toString()
+        val local = view.findViewById<EditText>(com.example.boaviagem.R.id.local_gasto).text.toString()
+        val gasto = Gasto(tipo.toInt(), valor.toFloat(), data, descricao, local, viagem_id)
 
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
