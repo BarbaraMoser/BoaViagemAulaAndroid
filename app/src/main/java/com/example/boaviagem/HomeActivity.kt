@@ -29,30 +29,28 @@ class HomeActivity(val usuario_id: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.let {
+            val view = inflater.inflate(R.layout.activity_home, container, false)
+            val recycler_view = view.findViewById<RecyclerView>(R.id.lista_viagens)
+            val list = buscar_viagens()
+            val adapter = ViagemAdapter(list)
+            recycler_view.adapter = adapter
+            recycler_view.layoutManager = LinearLayoutManager(it)
 
-        val view = inflater.inflate(R.layout.activity_home, container, false)
-        val recycler_view = view.findViewById<RecyclerView>(R.id.lista_viagens)
-        val list = buscar_viagens()
-        val adapter = ViagemAdapter(list)
-        recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(this)
-
-        adapter.onItemClick = {
-            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransacition()
-            fragmentTransaction.replace(R.id.novo_gasto_layout, NovoGasto(it.id)).commit()
+            adapter.onItemClick = {
+                val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+                val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransacition()
+                fragmentTransaction.replace(R.id.novo_gasto_layout, NovoGasto(it.id)).commit()
+            }
         }
-
         return view
     }
 
     fun buscar_viagens(): List<Viagem> {
-        val db = Room.databaseBuilder<AppDatabase?>(
-            this,
-            AppDatabase::class.java,
-            "boa_viagem_db"
-        ).build()
-        viagemDao = db.viagemDao()
+        activity?.let {
+            val db = Room.databaseBuilder(it, AppDatabase::class.java, "db").build()
+            viagemDao = db.viagemDao()
+        }
         return viagemDao.findAll()
     }
 
