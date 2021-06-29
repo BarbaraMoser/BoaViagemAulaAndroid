@@ -1,7 +1,6 @@
-package com.example.boaviagem.daodestino
+package com.example.boaviagem.dao
 
 import androidx.room.*
-import com.example.boaviagem.model.Usuario
 import com.example.boaviagem.model.Viagem
 
 @Dao

@@ -13,14 +13,11 @@ class ViagemAdapter(val item: List<Viagem>) : RecyclerView.Adapter<ViagemAdapter
     var onItemClick: ((Viagem) -> Unit)? = null
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private val tipoViagem: TextView
-        private val destino: TextView
-        private val chegada: TextView
+        private val tipoViagem: TextView = view.findViewById<TextView>(R.id.text_tipo_viagem)
+        private val destino: TextView = view.findViewById<TextView>(R.id.text_destino)
+        private val chegada: TextView = view.findViewById<TextView>(R.id.text_chegada)
 
         init {
-            tipoViagem = view.findViewById<TextView>(R.id.text_tipo_viagem)
-            destino = view.findViewById<TextView>(R.id.text_destino)
-            chegada = view.findViewById<TextView>(R.id.text_chegada)
             view.findViewById<CardView>(R.id.item_viagem_card_view).setOnClickListener {
                 onItemClick?.invoke(item[adapterPosition])
             }

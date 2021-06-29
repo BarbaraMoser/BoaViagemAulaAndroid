@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.boaviagem.dao.UsuarioDao
@@ -31,18 +30,19 @@ class LoginActivity : AppCompatActivity() {
     fun efetuar_login(view: View) {
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
-        val id = 1234
+        val id = "1234"
 
 //        GlobalScope.launch(Dispatchers.Main) {
 //            var usuario = withContext(Dispatchers.IO) {
 //                AppDatabase.getInstance(this@LoginActivity).usuarioDao().login(email, password)
 //            }
 //        }
-            Intent(this, FragmentMenu::class.java).apply {
-                putExtra("usuario", id);
-                startActivity(this)
-            }
+
+        Intent(this, FragmentMenu::class.java).apply {
+            putExtra("usuario", id);
+            startActivity(this)
         }
+    }
 
     fun registrar_usuario(view: View) {
         val intent = Intent(this, RegisterActivity::class.java)
