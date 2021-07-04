@@ -26,7 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
                 INSTANCE = Room.databaseBuilder(
                     context,
                     AppDatabase::class.java,
-                    "db"
+                    "boa_viagem_db"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

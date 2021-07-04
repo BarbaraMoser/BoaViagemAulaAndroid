@@ -22,12 +22,6 @@ import kotlinx.coroutines.withContext
 
 class HomeActivity(val usuario_id: String) : Fragment() {
 
-    lateinit var viagemDao: ViagemDao
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +31,7 @@ class HomeActivity(val usuario_id: String) : Fragment() {
             val view = inflater.inflate(R.layout.activity_home, container, false)
             val recyclerView = view.findViewById<RecyclerView>(R.id.lista_viagens)
             val list = buscar_viagens()
-            val adapter = list?.let { it1 -> ViagemAdapter(it1) }
+            val adapter = ViagemAdapter(list!!)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(it)
 

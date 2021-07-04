@@ -159,8 +159,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textSize="25sp"
+                    android:onClick="salvar_nova_viagem"
                     android:text="Salvar"/>
-<!--                    android:onClick="salvar_nova_viagem"/>-->
             </TableRow>
         </TableLayout>
 
