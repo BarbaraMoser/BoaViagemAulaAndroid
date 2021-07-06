@@ -2,7 +2,9 @@ package com.example.boaviagem
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,58 +25,36 @@ import kotlinx.coroutines.withContext
 
 class HomeActivity : Fragment() {
 
+    private lateinit var ctx: Context
+
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        activity?.let {
-            val view = inflater.inflate(R.layout.activity_home, container, false)
-
-//            val recyclerView = view.findViewById<RecyclerView>(R.id.lista_viagens)
-//            val list = buscar_viagens()
-//            val adapter = ViagemAdapter()
-//
-//            list?.let { it1 -> adapter.setViagens(it1) }
-//
-//            recyclerView.adapter = adapter
-//            recyclerView.layoutManager = LinearLayoutManager(it)
-
-//            adapter?.onItemClick = {
-//                val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-//                val fragmentTransaction = fragmentManager.beginTransaction()
-//                fragmentTransaction.replace(R.layout.activity_novo_gasto, NovoGasto(it.id)).commit()
-//            }
-        }
+        this.ctx = container?.context!!
+        val view = inflater.inflate(R.layout.activity_home, container, false)
         buscar_viagens(view)
         return view
     }
 
     @SuppressLint("ResourceType")
-    fun buscar_viagens(view: View?) {
-        activity?.let {
-
-            val adapter = ViagemAdapter()
-            val recyclerView = view?.findViewById<RecyclerView>(R.id.lista_viagens)
-
-            var viagens = emptyList<Viagem>()
-            activity?.let {
-                GlobalScope.launch(Dispatchers.Main) {
-                    viagens = withContext(Dispatchers.IO) {
-                        AppDatabase.getInstance(it).viagemDao().getViagens()
-                    }
-                }
+    fun buscar_viagens(view: View) {
+        val recyclerView = view.findViewById<RecyclerView>(R.id.lista_viagens)
+        GlobalScope.launch(Dispatchers.Main) {
+            val viagens = withContext(Dispatchers.IO) {
+                AppDatabase.getInstance(requireContext()).viagemDao().getViagens()
             }
+            Log.i("Buscar Viagens", "${viagens}")
+            val adapter = ViagemAdapter(viagens)
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-            viagens?.let { it1 -> adapter.setViagens(it1) }
-
-            recyclerView?.adapter = adapter
-            recyclerView?.layoutManager = LinearLayoutManager(it)
-
-            adapter?.onItemClick = {
+            adapter.onItemClick = {
+                Log.i("Click viagem", "passou aqui 2222")
                 val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.layout.activity_novo_gasto, NovoGasto(it.id)).commit()
+                fragmentTransaction.replace(R.id.framePrincipal, NovaViagem()).commit()
             }
         }
     }

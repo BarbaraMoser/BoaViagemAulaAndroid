@@ -2,19 +2,19 @@ package com.example.boaviagem
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class FragmentMenu : AppCompatActivity() {
+class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragment_menu)
-
-//        val id_usuario: Int = intent.extras?.get("usuario") as Int
+        setContentView(R.layout.activity_menu)
 
         supportFragmentManager
-                .beginTransaction()
-            .add(R.id.fragmento_home, HomeActivity())
+            .beginTransaction()
+            .add(R.id.framePrincipal, HomeActivity())
             .commit()
 
         val navegacao = findViewById<BottomNavigationView>(R.id.navegacao)
@@ -27,8 +27,8 @@ class FragmentMenu : AppCompatActivity() {
         }
     }
 
-
     private fun createFragment(fragment: Fragment): Boolean {
+        Log.i("CreateFragment Menu", "${fragment}")
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.framePrincipal, fragment)
@@ -36,4 +36,6 @@ class FragmentMenu : AppCompatActivity() {
             .commit()
         return true
     }
+
+
 }

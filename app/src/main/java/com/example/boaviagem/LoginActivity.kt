@@ -2,8 +2,10 @@ package com.example.boaviagem
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.boaviagem.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
@@ -25,14 +27,20 @@ class LoginActivity : AppCompatActivity() {
         var id = "1"
 
         GlobalScope.launch(Dispatchers.Main) {
+
             val usuario = withContext(Dispatchers.IO) {
                 AppDatabase.getInstance(this@LoginActivity).usuarioDao().login(email, password)
             }
-        }
-
-        Intent(this, FragmentMenu::class.java).apply {
-            putExtra("usuario", id);
-            startActivity(this)
+            Log.i("Global Login", "Usuário ${usuario}")
+            if (usuario != null) {
+                Intent(this@LoginActivity, MenuActivity::class.java).apply {
+                    putExtra("usuario", id);
+                    startActivity(this)
+                }
+            } else {
+                Toast.makeText(this@LoginActivity, "Usuário e/ou senha incorretos!", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 

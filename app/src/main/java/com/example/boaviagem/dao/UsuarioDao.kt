@@ -22,5 +22,5 @@ interface UsuarioDao {
     fun findById(id: Int): Usuario
 
     @Query("select * from Usuario where email=:email and password=:password")
-    fun login(email: String, password: String): Usuario
+    fun login(email: String, password: String): Usuario?
 }
