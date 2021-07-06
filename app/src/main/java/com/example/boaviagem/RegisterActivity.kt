@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.boaviagem.database.AppDatabase
-import com.example.boaviagem.model.Usuario
+import com.example.boaviagem.domains.Usuario
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,7 +23,8 @@ class RegisterActivity : AppCompatActivity() {
         val nome = findViewById<EditText>(R.id.nome_registro).text.toString()
         val email = findViewById<EditText>(R.id.email_registro).text.toString()
         val password = findViewById<EditText>(R.id.password_registro).text.toString()
-        val usuario = Usuario(nome, email, password)
+        val usuario =
+            Usuario(nome, email, password)
 
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {

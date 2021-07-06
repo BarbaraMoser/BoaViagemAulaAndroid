@@ -1,23 +1,28 @@
 package com.example.boaviagem.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.boaviagem.model.Viagem
+import com.example.boaviagem.domains.Viagem
 
 @Dao
 interface ViagemDao {
 
-    @Insert
-    fun insert(viagem: Viagem)
+    @Query("select * from Viagem order by tipo, destino asc")
+    fun getViagens(): List<Viagem>
 
-    @Update
-    fun update(viagem: Viagem)
+    @Query("select * from Viagem where id = :id")
+    fun getViagemById(id: Int): Viagem
 
-    @Delete
-    fun delete(viagem: Viagem)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(viagem: Viagem)
 
-    @Query("select * from Viagem order by tipo, destino")
-    fun findAll(): List<Viagem>
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun udpate(viagem: Viagem)
 
-    @Query("select * from Viagem where id=:id")
-    fun findById(id: Int): Viagem
+    @Query("delete from Viagem")
+    suspend fun deleteTodas()
+
+    @Delete()
+    suspend fun delete(viagem: Viagem)
+
 }

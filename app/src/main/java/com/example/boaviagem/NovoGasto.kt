@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.boaviagem.daodestino.GastoDao
-import com.example.boaviagem.model.Gasto
+import com.example.boaviagem.domains.Gasto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -46,7 +46,14 @@ class NovoGasto(val viagem_id: Int) : Fragment() {
         val data = view.findViewById<EditText>(com.example.boaviagem.R.id.data_picker_gasto).text.toString()
         val descricao = view.findViewById<EditText>(com.example.boaviagem.R.id.descricao).text.toString()
         val local = view.findViewById<EditText>(com.example.boaviagem.R.id.local_gasto).text.toString()
-        val gasto = Gasto(tipo.toInt(), valor.toFloat(), data, descricao, local, viagem_id)
+        val gasto = Gasto(
+            tipo.toInt(),
+            valor.toFloat(),
+            data,
+            descricao,
+            local,
+            viagem_id
+        )
 
         GlobalScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {

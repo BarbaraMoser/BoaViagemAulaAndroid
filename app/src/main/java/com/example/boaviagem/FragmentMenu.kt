@@ -10,18 +10,18 @@ class FragmentMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_menu)
 
-        val id_usuario: String = intent.extras?.get("usuario").toString()
+//        val id_usuario: Int = intent.extras?.get("usuario") as Int
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmento_home, HomeActivity(id_usuario))
+            .add(R.id.fragmento_home, HomeActivity())
             .commit()
 
         val navegacao = findViewById<BottomNavigationView>(R.id.navegacao)
         navegacao.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.fragmento_home -> createFragment(HomeActivity(id_usuario))
-                R.id.fragmento_nova_viagem -> createFragment(NovaViagem(id_usuario))
+                R.id.fragmento_home -> createFragment(HomeActivity())
+                R.id.fragmento_nova_viagem -> createFragment(NovaViagem())
                 else -> false
             }
         }

@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 import com.example.boaviagem.dao.UsuarioDao
 import com.example.boaviagem.daodestino.GastoDao
 import com.example.boaviagem.dao.ViagemDao
-import com.example.boaviagem.model.Gasto
-import com.example.boaviagem.model.Usuario
-import com.example.boaviagem.model.Viagem
+import com.example.boaviagem.domains.Gasto
+import com.example.boaviagem.domains.Usuario
+import com.example.boaviagem.domains.Viagem
 
-@Database(entities = arrayOf(Usuario::class, Viagem::class, Gasto::class), version = 2, exportSchema = false)
+@Database(entities = arrayOf(Usuario::class, Viagem::class, Gasto::class), version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun usuarioDao(): UsuarioDao
@@ -19,23 +19,36 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun gastoDao(): GastoDao
 
     companion object {
+        @Volatile
         private var INSTANCE: AppDatabase? = null
 
+//        fun getInstance(context: Context): AppDatabase {
+//            if (INSTANCE == null) {
+//                INSTANCE = Room.databaseBuilder(
+//                    context,
+//                    AppDatabase::class.java,
+//                    "boa_viagem_db"
+//                )
+//                    .fallbackToDestructiveMigration()
+//                    .build()
+//            }
+//            return INSTANCE as AppDatabase
+//        }
+
         fun getInstance(context: Context): AppDatabase {
-            if (INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(
-                    context,
+            if (INSTANCE != null) {
+                return INSTANCE as AppDatabase
+            }
+            synchronized(this) {
+                val INSTANCE = Room.databaseBuilder(
+                    context.applicationContext,
                     AppDatabase::class.java,
                     "boa_viagem_db"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
+                ).fallbackToDestructiveMigration().build()
+                return INSTANCE
             }
-            return INSTANCE as AppDatabase
         }
     }
-
-
 }
 
 

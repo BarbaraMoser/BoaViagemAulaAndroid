@@ -4,15 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.room.Room
 import com.example.boaviagem.dao.UsuarioDao
 import com.example.boaviagem.database.AppDatabase
-import com.example.boaviagem.model.Usuario
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,7 +1,7 @@
 package com.example.boaviagem.daodestino
 
 import androidx.room.*
-import com.example.boaviagem.model.Gasto
+import com.example.boaviagem.domains.Gasto
 
 @Dao
 interface GastoDao {
