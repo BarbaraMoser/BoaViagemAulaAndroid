@@ -2,6 +2,7 @@ package com.example.boaviagem.domains
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity
 data class Viagem(
@@ -10,9 +11,9 @@ data class Viagem(
     var data_chegada: String,
     var data_partida: String,
     var orcamento: String,
-    var id_usuario: Int
+    var id_usuario: String
 ) {
 
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    @PrimaryKey(autoGenerate = false)
+    var id: String = UUID.randomUUID().toString();
 }

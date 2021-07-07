@@ -1,4 +1,4 @@
-package com.example.boaviagem
+package com.example.boaviagem.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.boaviagem.R
 import com.example.boaviagem.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -24,7 +25,6 @@ class LoginActivity : AppCompatActivity() {
     fun efetuar_login(view: View) {
         val email = findViewById<EditText>(R.id.email).text.toString()
         val password = findViewById<EditText>(R.id.password).text.toString()
-        var id = "1"
 
         GlobalScope.launch(Dispatchers.Main) {
 
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             Log.i("Global Login", "Usuário ${usuario}")
             if (usuario != null) {
                 Intent(this@LoginActivity, MenuActivity::class.java).apply {
-                    putExtra("usuario", id);
+                    putExtra("usuario", usuario.id);
                     startActivity(this)
                 }
             } else {

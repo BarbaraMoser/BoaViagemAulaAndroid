@@ -1,4 +1,4 @@
-package com.example.boaviagem
+package com.example.boaviagem.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.example.boaviagem.R
 import com.example.boaviagem.daodestino.GastoDao
 import com.example.boaviagem.domains.Gasto
 import kotlinx.coroutines.Dispatchers
@@ -13,9 +14,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NovoGasto(val viagem_id: Int) : Fragment() {
+class NovoGasto(viagem_id: String) : Fragment() {
 
     lateinit var gastoDao: GastoDao
+    private var viagem: String = viagem_id
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,25 +36,25 @@ class NovoGasto(val viagem_id: Int) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(
-            com.example.boaviagem.R.layout.activity_novo_gasto,
+            R.layout.activity_novo_gasto,
             container,
             false
         )
     }
 
     fun salvar_novo_gasto(view: View) {
-        val tipo = view.findViewById<EditText>(com.example.boaviagem.R.id.spinner_tipo_gasto).text.toString()
-        val valor = view.findViewById<EditText>(com.example.boaviagem.R.id.valor).text.toString()
-        val data = view.findViewById<EditText>(com.example.boaviagem.R.id.data_picker_gasto).text.toString()
-        val descricao = view.findViewById<EditText>(com.example.boaviagem.R.id.descricao).text.toString()
-        val local = view.findViewById<EditText>(com.example.boaviagem.R.id.local_gasto).text.toString()
+        val tipo = view.findViewById<EditText>(R.id.spinner_tipo_gasto).text.toString()
+        val valor = view.findViewById<EditText>(R.id.valor).text.toString()
+        val data = view.findViewById<EditText>(R.id.data_picker_gasto).text.toString()
+        val descricao = view.findViewById<EditText>(R.id.descricao).text.toString()
+        val local = view.findViewById<EditText>(R.id.local_gasto).text.toString()
         val gasto = Gasto(
             tipo.toInt(),
             valor.toFloat(),
             data,
             descricao,
             local,
-            viagem_id
+            viagem
         )
 
         GlobalScope.launch(Dispatchers.Main) {

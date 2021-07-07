@@ -1,10 +1,11 @@
-package com.example.boaviagem
+package com.example.boaviagem.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.boaviagem.R
 import com.example.boaviagem.database.AppDatabase
 import com.example.boaviagem.domains.Usuario
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        Intent(this, FragmentMenu::class.java).apply {
+        Intent(this, MenuActivity::class.java).apply {
             putExtra("usuario", usuario.id);
             startActivity(this)
         }

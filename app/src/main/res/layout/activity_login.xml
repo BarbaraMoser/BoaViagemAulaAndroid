@@ -7,7 +7,7 @@
     android:shrinkColumns="*"
     android:stretchColumns="*"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".view.LoginActivity">
 
     <TableLayout
         android:layout_width="match_parent"

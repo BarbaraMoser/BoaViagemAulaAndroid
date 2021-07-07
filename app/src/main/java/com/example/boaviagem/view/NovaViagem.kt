@@ -1,4 +1,4 @@
-package com.example.boaviagem
+package com.example.boaviagem.view
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,6 +11,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.boaviagem.R
 import com.example.boaviagem.database.AppDatabase
 import com.example.boaviagem.domains.Viagem
 import kotlinx.coroutines.Dispatchers
@@ -21,9 +22,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class NovaViagem() : Fragment() {
+class NovaViagem(id_usuario: String) : Fragment() {
 
     private lateinit var ctx: Context
+    private var usuario: String = id_usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,23 +45,22 @@ class NovaViagem() : Fragment() {
 
     fun salvar_nova_viagem(view: View) {
         val destino =
-            view.findViewById<EditText>(com.example.boaviagem.R.id.destino).text.toString()
+            view.findViewById<EditText>(R.id.destino).text.toString()
         val tipo =
-            view.findViewById<Spinner>(com.example.boaviagem.R.id.spinner_tipo_viagem).onItemClickListener.toString()
+            view.findViewById<Spinner>(R.id.spinner_tipo_viagem).onItemClickListener.toString()
         val data_chegada =
-            get_date(view.findViewById<DatePicker>(com.example.boaviagem.R.id.data_picker_chegada))
+            get_date(view.findViewById<DatePicker>(R.id.data_picker_chegada))
         val data_partida =
-            get_date(view.findViewById<DatePicker>(com.example.boaviagem.R.id.data_picker_partida))
+            get_date(view.findViewById<DatePicker>(R.id.data_picker_partida))
         val orcamento =
-            view.findViewById<EditText>(com.example.boaviagem.R.id.orcamento_viagem).text.toString()
-        val usuario_id = 1
+            view.findViewById<EditText>(R.id.orcamento_viagem).text.toString()
         val viagem = Viagem(
             destino,
             tipo,
             data_chegada,
             data_partida,
             orcamento,
-            usuario_id
+            usuario
         )
 
         GlobalScope.launch(Dispatchers.Main) {
@@ -72,10 +73,8 @@ class NovaViagem() : Fragment() {
     @SuppressLint("SimpleDateFormat")
     fun get_date(datePicker: DatePicker): String {
         val day: Int = datePicker.dayOfMonth
-        val month: Int = datePicker.month + 1
+        val month: Int = datePicker.month
         val year: Int = datePicker.year
-        val dateFormatter = SimpleDateFormat("MM-dd-yyyy")
-        val d = Date(year, month, day)
-        return dateFormatter.format(d)
+        return "${day}-${month}-${year}"
     }
 }

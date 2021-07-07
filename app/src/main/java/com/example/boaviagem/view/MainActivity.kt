@@ -1,10 +1,11 @@
-package com.example.boaviagem
+package com.example.boaviagem.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.room.Room
+import com.example.boaviagem.R
 import com.example.boaviagem.dao.UsuarioDao
 import com.example.boaviagem.database.AppDatabase
 
