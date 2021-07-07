@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.boaviagem.R
 import com.example.boaviagem.database.AppDatabase
@@ -18,8 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class NovaViagem(id_usuario: String) : Fragment() {
@@ -47,7 +44,7 @@ class NovaViagem(id_usuario: String) : Fragment() {
         val destino =
             view.findViewById<EditText>(R.id.destino).text.toString()
         val tipo =
-            view.findViewById<Spinner>(R.id.spinner_tipo_viagem).onItemClickListener.toString()
+            view.findViewById<EditText>(R.id.tipo).text.toString()
         val data_chegada =
             get_date(view.findViewById<DatePicker>(R.id.data_picker_chegada))
         val data_partida =
@@ -73,7 +70,7 @@ class NovaViagem(id_usuario: String) : Fragment() {
     @SuppressLint("SimpleDateFormat")
     fun get_date(datePicker: DatePicker): String {
         val day: Int = datePicker.dayOfMonth
-        val month: Int = datePicker.month
+        val month: Int = datePicker.month + 1
         val year: Int = datePicker.year
         return "${day}-${month}-${year}"
     }
