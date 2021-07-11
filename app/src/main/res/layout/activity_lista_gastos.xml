@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="30dp"
-    tools:context=".view.HomeActivity">
+    tools:context=".view.ListaGastos">
 
     <TextView
-        android:id="@+id/sem_viagens"
+        android:id="@+id/sem_gastos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -17,14 +16,23 @@
         android:padding="10dp"
         android:text=""/>
 
+    <Button
+        android:id="@+id/adicionar_gasto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp"
+        android:text="@string/adicionar_gasto"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/lista_viagens"
+            android:id="@+id/lista_gastos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
     </ScrollView>
 
 </FrameLayout>

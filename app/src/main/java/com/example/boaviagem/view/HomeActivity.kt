@@ -4,10 +4,10 @@ package com.example.boaviagem.view
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +34,7 @@ class HomeActivity(id_usuario: String) : Fragment() {
         this.ctx = container?.context!!
         val view = inflater.inflate(R.layout.activity_home, container, false)
         buscar_viagens(view)
+
         return view
     }
 
@@ -43,20 +44,24 @@ class HomeActivity(id_usuario: String) : Fragment() {
 
         GlobalScope.launch(Dispatchers.Main) {
             val viagens = withContext(Dispatchers.IO) {
-                AppDatabase.getInstance(requireContext()).viagemDao().getViagens()
+                AppDatabase.getInstance(requireContext()).viagemDao().getViagens(usuario)
             }
-            Log.i("Buscar Viagens", "${viagens}")
+            if (viagens.isEmpty()) {
+                val sem_viagens = view.findViewById<TextView>(R.id.sem_viagens)
+                sem_viagens.text = "Não há viagens cadastradas"
+            }
+
             val adapter = ViagemAdapter(viagens)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+
             adapter.onItemClick = {
-                Log.i("Click viagem", "passou aqui 2222")
                 val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.replace(
                     R.id.framePrincipal,
-                    NovaViagem(usuario)
+                    EditarViagens(it)
                 ).commit()
             }
         }

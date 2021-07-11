@@ -6,12 +6,12 @@ import java.util.*
 
 @Entity
 data class Gasto(
-    val tipo: Int,
-    val valor: Float,
-    val data: String,
-    val descricao: String,
-    val local: String,
-    val id_viagem: String
+    var tipo: String,
+    var valor: Float,
+    var data: String,
+    var descricao: String,
+    var local: String,
+    var id_viagem: String
 ) {
 
     @PrimaryKey(autoGenerate = false)

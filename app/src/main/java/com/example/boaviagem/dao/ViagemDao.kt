@@ -7,11 +7,11 @@ import com.example.boaviagem.domains.Viagem
 @Dao
 interface ViagemDao {
 
-    @Query("select * from Viagem order by tipo, destino asc")
-    fun getViagens(): List<Viagem>
+    @Query("select * from Viagem where id_usuario = :id_usuario order by tipo, destino asc")
+    fun getViagens(id_usuario: String): List<Viagem>
 
     @Query("select * from Viagem where id = :id")
-    fun getViagemById(id: Int): Viagem
+    fun getViagemById(id: String): Viagem
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(viagem: Viagem)

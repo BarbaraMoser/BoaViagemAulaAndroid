@@ -2,6 +2,7 @@ package com.example.boaviagem.view
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.boaviagem.R
 import com.example.boaviagem.database.AppDatabase
@@ -22,6 +24,7 @@ import kotlinx.coroutines.withContext
 class NovaViagem(id_usuario: String) : Fragment() {
 
     private lateinit var ctx: Context
+    private lateinit var exc: ClassNotFoundException
     private var usuario: String = id_usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,8 +64,18 @@ class NovaViagem(id_usuario: String) : Fragment() {
         )
 
         GlobalScope.launch(Dispatchers.Main) {
-            withContext(Dispatchers.IO) {
-                AppDatabase.getInstance(ctx).viagemDao().insert(viagem)
+            var e: ClassNotFoundException
+            try {
+                withContext(Dispatchers.IO) {
+                    AppDatabase.getInstance(ctx).viagemDao().insert(viagem)
+                }
+            } catch (exc: ClassNotFoundException) {
+                Toast.makeText(ctx, "Não foi possível salvar a viagem: ${exc}", Toast.LENGTH_SHORT)
+                    .show()
+            } finally {
+                Intent(ctx, MenuActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
         }
     }
@@ -74,4 +87,5 @@ class NovaViagem(id_usuario: String) : Fragment() {
         val year: Int = datePicker.year
         return "${day}-${month}-${year}"
     }
+
 }

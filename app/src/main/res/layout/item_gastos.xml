@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/item_viagem_card_view">
+    android:id="@+id/item_gastos_card_view">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -12,26 +12,18 @@
         android:padding="10dp">
 
 
-        <ImageView
-            android:id="@+id/imagem_tipo_viagem"
-            android:layout_width="68dp"
-            android:layout_height="61dp"
-            android:layout_rowSpan="4"
-            android:padding="2dp"
-            android:gravity="start" />
-
-<!--        TIPO-->
+<!--        DESCRIÇÃO-->
         <TextView
-            android:id="@+id/tipo_viagem_salva"
+            android:id="@+id/descricao_gasto_salvo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_column="1"
             android:layout_row="1"
             android:gravity="start"
-            android:text="@string/tipo" />
+            android:text="@string/descri_o" />
 
         <TextView
-            android:id="@+id/text_tipo_viagem"
+            android:id="@+id/text_descricao_gasto"
             android:layout_width="234dp"
             android:layout_height="match_parent"
             android:layout_column="2"
@@ -39,41 +31,24 @@
             android:gravity="start" />
 
 
-<!--        DESTINO-->
+<!--        VALOR-->
         <TextView
-            android:id="@+id/destino_salva"
+            android:id="@+id/valor_gasto_salvo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_row="2"
             android:layout_column="1"
             android:gravity="start"
-            android:text="@string/destino" />
+            android:text="@string/valor" />
 
         <TextView
-            android:id="@+id/text_destino"
+            android:id="@+id/text_valor_gasto"
             android:layout_width="234dp"
             android:layout_height="match_parent"
             android:layout_column="2"
             android:layout_row="2"
             android:gravity="start"/>
 
-<!--        DATA CHEGADA-->
-        <TextView
-            android:id="@+id/data_chegada_salva"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_row="3"
-            android:layout_column="1"
-            android:gravity="start"
-            android:text="@string/data_chegada"/>
-
-        <TextView
-            android:id="@+id/text_chegada"
-            android:layout_width="234dp"
-            android:layout_height="match_parent"
-            android:layout_column="2"
-            android:layout_row="3"
-            android:gravity="start"/>
     </GridLayout>
 
 

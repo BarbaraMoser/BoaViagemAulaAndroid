@@ -6,4 +6,14 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="nome">Nome</string>
+    <string name="data_chegada">Data Chegada:</string>
+    <string name="destino">Destino:</string>
+    <string name="tipo">Tipo:</string>
+    <string name="valor">Valor:</string>
+    <string name="descri_o">Descrição:</string>
+    <string name="voltar">Voltar</string>
+    <string name="deletar">Deletar</string>
+    <string name="salvar">Salvar</string>
+    <string name="gastos">Gastos</string>
+    <string name="adicionar_gasto">Adicionar gasto</string>
 </resources>

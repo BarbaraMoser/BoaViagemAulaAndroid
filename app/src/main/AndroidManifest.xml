@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BoaViagem">
-        <activity android:name=".view.MenuActivity"></activity>
+        <activity android:name=".view.EditarGastos"></activity>
+        <activity android:name=".view.EditarViagens" />
+        <activity android:name=".activity_editar_viagens" />
+        <activity android:name=".view.ListaGastos" />
+        <activity android:name=".view.MenuActivity" />
         <activity android:name=".FragmentMenu" />
         <activity android:name=".view.NovoGasto" />
         <activity android:name=".view.NovaViagem" />

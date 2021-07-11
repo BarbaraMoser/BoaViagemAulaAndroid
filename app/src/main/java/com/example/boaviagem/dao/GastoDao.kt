@@ -2,22 +2,23 @@ package com.example.boaviagem.daodestino
 
 import androidx.room.*
 import com.example.boaviagem.domains.Gasto
+import com.example.boaviagem.domains.Viagem
 
 @Dao
 interface GastoDao {
 
-    @Insert
-    fun insert(gasto: Gasto)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(gasto: Gasto)
 
-    @Update
-    fun update(gasto: Gasto)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun udpate(gasto: Gasto)
 
     @Delete
-    fun delete(gasto: Gasto)
+    suspend fun delete(gasto: Gasto)
 
-    @Query("select * from Gasto order by tipo, local")
-    fun findAll(): List<Gasto>
+    @Query("select * from Gasto where id_viagem = :id_viagem order by tipo asc")
+    fun getGastos(id_viagem: String): List<Gasto>
 
     @Query("select * from Gasto where id=:id")
-    fun findById(id: Int): Gasto
+    fun getViagemById(id: Int): Gasto
 }

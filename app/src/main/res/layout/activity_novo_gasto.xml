@@ -35,8 +35,8 @@
                     android:inputType="numberDecimal"
                     android:padding="10dp"
                     android:textColor="#0C0C0C"
-                    android:textColorHint="#0C0C0C"
-                    android:textSize="25sp"
+                    android:textColorHint="#939292"
+                    android:textSize="15sp"
                     android:autofillHints="" />
             </TableRow>
 
@@ -47,23 +47,15 @@
                 android:gravity="fill_horizontal">
 
                 <TextView
-                    android:id="@+id/data_gasto"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/chegada"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textSize="25sp"
-                    android:gravity="start"
-                    android:background="#DFDCDC"
-                    android:textColor="#0C0C0C"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textColor="#939292"
                     android:padding="10dp"
-                    android:text="Data do Gasto"
-                    android:textColorHint="#0C0C0C" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="fill_horizontal">
+                    android:text="Data do Gasto"/>
 
                 <DatePicker
                     android:id="@+id/data_picker_gasto"
@@ -90,8 +82,8 @@
                     android:inputType="text"
                     android:padding="10dp"
                     android:textColor="#0C0C0C"
-                    android:textColorHint="#0C0C0C"
-                    android:textSize="25sp"
+                    android:textColorHint="#939292"
+                    android:textSize="15sp"
                     android:autofillHints="" />
             </TableRow>
 
@@ -112,8 +104,8 @@
                     android:inputType="text"
                     android:padding="10dp"
                     android:textColor="#0C0C0C"
-                    android:textColorHint="#0C0C0C"
-                    android:textSize="25sp"
+                    android:textColorHint="#939292"
+                    android:textSize="15sp"
                     android:autofillHints="" />
             </TableRow>
 
@@ -123,20 +115,20 @@
                 android:layout_marginTop="20dp"
                 android:gravity="fill_horizontal">
 
-                <Spinner
-                    android:id="@+id/spinner_tipo_gasto"
+                <EditText
+                    android:id="@+id/tipo_gasto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:background="#DFDCDC"
-                    android:entries="@array/tipo_gasto_arrays"
                     android:gravity="start"
-                    android:padding="15dp"
-                    android:popupBackground="#959595"
-                    android:prompt="@string/tipo_gasto_prompt"
-                    android:spinnerMode="dropdown"
-                    android:textColor="#959595"
-                    android:textSize="40sp" />
+                    android:hint="Tipo (Alimentação, Combustível, Hospedagem, Extras)"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="#0C0C0C"
+                    android:textColorHint="#939292"
+                    android:textSize="15sp"
+                    android:autofillHints="" />
             </TableRow>
 
             <TableRow
@@ -151,8 +143,17 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textSize="25sp"
+                    android:layout_margin="4dp"
                     android:text="Salvar"/>
-<!--                    android:onClick="salvar_novo_gasto"/>-->
+
+                <Button
+                    android:id="@+id/voltar_novo_gasto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:layout_margin="4dp"
+                    android:text="Voltar"/>
             </TableRow>
 
         </TableLayout>

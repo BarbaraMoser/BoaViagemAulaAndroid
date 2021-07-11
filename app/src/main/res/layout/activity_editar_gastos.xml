@@ -22,7 +22,7 @@
                 android:gravity="fill_horizontal">
 
                 <EditText
-                    android:id="@+id/destino"
+                    android:id="@+id/tipo_gasto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -31,9 +31,7 @@
                     android:background="#EDEDED"
                     android:textColor="#0C0C0C"
                     android:padding="10dp"
-                    android:hint="Destino"
-                    android:inputType="text"
-                    android:textColorHint="#939292" />
+                    android:inputType="text" />
             </TableRow>
 
             <TableRow
@@ -43,7 +41,7 @@
                 android:gravity="fill_horizontal">
 
                 <EditText
-                    android:id="@+id/tipo"
+                    android:id="@+id/valor_gasto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -52,59 +50,7 @@
                     android:background="#EDEDED"
                     android:textColor="#0C0C0C"
                     android:padding="10dp"
-                    android:hint="Tipo (Lazer ou Negócio)"
-                    android:inputType="text"
-                    android:textColorHint="#939292"/>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="fill_horizontal">
-
-                <TextView
-                    android:id="@+id/chegada"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:textColor="#939292"
-                    android:padding="10dp"
-                    android:text="Data de Chegada"/>
-
-                <DatePicker
-                    android:id="@+id/data_picker_chegada"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:calendarViewShown="false"
-                    android:datePickerMode="spinner" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="fill_horizontal">
-
-                <TextView
-                    android:id="@+id/partida_viagem"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:textColor="#939292"
-                    android:padding="10dp"
-                    android:text="Data de Partida" />
-
-                <DatePicker
-                    android:id="@+id/data_picker_partida"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:calendarViewShown="false"
-                    android:datePickerMode="spinner" />
+                    android:inputType="text"/>
             </TableRow>
 
             <TableRow
@@ -114,7 +60,26 @@
                 android:gravity="fill_horizontal">
 
                 <EditText
-                    android:id="@+id/orcamento_viagem"
+                    android:id="@+id/data_gasto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#EDEDED"
+                    android:gravity="start"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="#0C0C0C"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <EditText
+                    android:id="@+id/descricao_gasto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -123,10 +88,26 @@
                     android:background="#EDEDED"
                     android:textColor="#0C0C0C"
                     android:padding="10dp"
-                    android:hint="Orçamento"
-                    android:inputType="numberDecimal"
-                    android:textColorHint="#939292"
-                    android:autofillHints="" />
+                    android:inputType="text" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <EditText
+                    android:id="@+id/local_gasto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:gravity="start"
+                    android:background="#EDEDED"
+                    android:textColor="#0C0C0C"
+                    android:padding="10dp"
+                    android:inputType="text" />
             </TableRow>
 
             <TableRow
@@ -136,12 +117,29 @@
                 android:gravity="fill_horizontal">
 
                 <Button
-                    android:id="@+id/salvar_nova_viagem"
+                    android:id="@+id/salvar_gasto"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textSize="25sp"
-                    android:text="Salvar"/>
+                    android:textSize="18sp"
+                    android:layout_margin="2dp"
+                    android:text="@string/salvar"/>
+                <Button
+                    android:id="@+id/deletar_gasto"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:layout_margin="2dp"
+                    android:text="@string/deletar"/>
+                <Button
+                    android:id="@+id/voltar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:layout_margin="2dp"
+                    android:text="@string/voltar"/>
             </TableRow>
         </TableLayout>
 
