@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_gastos_card_view">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:columnCount="2"
+        android:padding="10dp">
+
+
+<!--        DESCRIÇÃO-->
+        <TextView
+            android:id="@+id/descricao_gasto_salvo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:gravity="start"
+            android:padding="5dp"
+            android:text="@string/descri_o" />
+
+        <TextView
+            android:id="@+id/text_descricao_gasto"
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:gravity="start" />
+
+
+<!--        VALOR-->
+        <TextView
+            android:id="@+id/valor_gasto_salvo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:gravity="start"
+            android:padding="5dp"
+            android:text="@string/valor" />
+
+        <TextView
+            android:id="@+id/text_valor_gasto"
+            android:layout_width="234dp"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:gravity="start"/>
+
+    </GridLayout>
+
+
+</androidx.cardview.widget.CardView>

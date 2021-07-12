@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".view.NovaViagem">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill_horizontal">
+
+                <EditText
+                    android:id="@+id/destino"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:gravity="start"
+                    android:background="#EDEDED"
+                    android:textColor="#0C0C0C"
+                    android:padding="10dp"
+                    android:hint="Destino"
+                    android:inputType="text"
+                    android:textColorHint="#939292" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <EditText
+                    android:id="@+id/tipo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:gravity="start"
+                    android:background="#EDEDED"
+                    android:textColor="#0C0C0C"
+                    android:padding="10dp"
+                    android:hint="Tipo (Lazer ou Negócio)"
+                    android:inputType="text"
+                    android:textColorHint="#939292"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <TextView
+                    android:id="@+id/chegada"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textColor="#939292"
+                    android:padding="10dp"
+                    android:text="Data de Chegada"/>
+
+                <DatePicker
+                    android:id="@+id/data_picker_chegada"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <TextView
+                    android:id="@+id/partida_viagem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textColor="#939292"
+                    android:padding="10dp"
+                    android:text="Data de Partida" />
+
+                <DatePicker
+                    android:id="@+id/data_picker_partida"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <EditText
+                    android:id="@+id/orcamento_viagem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:gravity="start"
+                    android:background="#EDEDED"
+                    android:textColor="#0C0C0C"
+                    android:padding="10dp"
+                    android:hint="Orçamento"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="#939292"
+                    android:autofillHints="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="fill_horizontal">
+
+                <Button
+                    android:id="@+id/salvar_nova_viagem"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:text="Salvar"/>
+            </TableRow>
+        </TableLayout>
+
+    </ScrollView>
+
+</FrameLayout>
