@@ -35,10 +35,6 @@ class ListaGastos(viagem: Viagem) : Fragment() {
         this.ctx = container?.context!!
         val view = inflater.inflate(R.layout.activity_lista_gastos, container, false)
 
-        view.findViewById<Button>(R.id.adicionar_gasto).setOnClickListener {
-            adicionar_gasto(view)
-        }
-
         buscar_gastos(view)
 
         return view
@@ -57,8 +53,12 @@ class ListaGastos(viagem: Viagem) : Fragment() {
                 val sem_gastos = view.findViewById<TextView>(R.id.sem_gastos)
                 sem_gastos.text = "Não há gastos cadastrados"
                 botao.isVisible = true
+                view.findViewById<Button>(R.id.adicionar_gasto).setOnClickListener {
+                    adicionar_gasto(view)
+                }
+            } else {
+                botao.isVisible = false
             }
-            botao.isVisible = false
             val adapter = GastoAdapter(gastos)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())

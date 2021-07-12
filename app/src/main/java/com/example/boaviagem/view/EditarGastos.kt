@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,12 +22,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class EditarGastos(gasto: Gasto, viagem: Viagem) : Fragment() {
+class EditarGastos(private var gasto: Gasto, private var viagem: Viagem) : Fragment() {
 
     private lateinit var ctx: Context
-    private var gasto_obj: Gasto = gasto
-    private var usuario: String = viagem.id_usuario
-    private var viagem: Viagem = viagem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +36,16 @@ class EditarGastos(gasto: Gasto, viagem: Viagem) : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_editar_gastos, container, false)
         this.ctx = container?.context!!
+
         set_dados_gasto(view)
-        view.findViewById<Button>(R.id.salvar_novo_gasto).setOnClickListener {
+
+        view.findViewById<Button>(R.id.voltar).setOnClickListener {
+            Log.i("Voltar", "Passou aqui no voltar")
+            voltar_menu_principal(view)
+        }
+
+        view.findViewById<Button>(R.id.salvar_gasto).setOnClickListener {
+            Log.i("Salvar gasto", "Passou aqui")
             salvar_novo_gasto(view)
         }
 
@@ -47,18 +53,15 @@ class EditarGastos(gasto: Gasto, viagem: Viagem) : Fragment() {
             deletar_gasto(view)
         }
 
-        view.findViewById<Button>(R.id.voltar).setOnClickListener {
-            voltar_menu_principal(view)
-        }
         return view
     }
 
     fun set_dados_gasto(view: View) {
-        view.findViewById<EditText>(R.id.tipo_gasto).setText(gasto_obj.tipo)
-        view.findViewById<EditText>(R.id.valor_gasto).setText(gasto_obj.valor.toString())
-        view.findViewById<EditText>(R.id.data_gasto).setText(gasto_obj.data)
-        view.findViewById<EditText>(R.id.descricao_gasto).setText(gasto_obj.descricao)
-        view.findViewById<EditText>(R.id.local_gasto).setText(gasto_obj.local)
+        view.findViewById<EditText>(R.id.tipo_gasto).setText(gasto.tipo)
+        view.findViewById<EditText>(R.id.valor_gasto).setText(gasto.valor.toString())
+        view.findViewById<EditText>(R.id.data_gasto).setText(gasto.data)
+        view.findViewById<EditText>(R.id.descricao_gasto).setText(gasto.descricao)
+        view.findViewById<EditText>(R.id.local_gasto).setText(gasto.local)
     }
 
     fun salvar_novo_gasto(view: View) {
@@ -68,16 +71,16 @@ class EditarGastos(gasto: Gasto, viagem: Viagem) : Fragment() {
         val descricao = view.findViewById<EditText>(R.id.descricao_gasto).text.toString()
         val local = view.findViewById<EditText>(R.id.local_gasto).text.toString()
 
-        gasto_obj.tipo = tipo
-        gasto_obj.valor = valor.toFloat()
-        gasto_obj.data = data
-        gasto_obj.descricao = descricao
-        gasto_obj.local = local
+        gasto.tipo = tipo
+        gasto.valor = valor.toFloat()
+        gasto.data = data
+        gasto.descricao = descricao
+        gasto.local = local
 
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 withContext(Dispatchers.IO) {
-                    AppDatabase.getInstance(ctx).gastoDao().udpate(gasto_obj)
+                    AppDatabase.getInstance(ctx).gastoDao().udpate(gasto)
                 }
             } catch (exc: ClassNotFoundException) {
                 Toast.makeText(ctx, "Não foi possível salvar o gasto: ${exc}", Toast.LENGTH_SHORT)
@@ -90,7 +93,7 @@ class EditarGastos(gasto: Gasto, viagem: Viagem) : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 withContext(Dispatchers.IO) {
-                    AppDatabase.getInstance(ctx).gastoDao().delete(gasto_obj)
+                    AppDatabase.getInstance(ctx).gastoDao().delete(gasto)
                 }
             } catch (exc: ClassNotFoundException) {
                 Toast.makeText(ctx, "Não foi possível deletar o gasto: ${exc}", Toast.LENGTH_SHORT)

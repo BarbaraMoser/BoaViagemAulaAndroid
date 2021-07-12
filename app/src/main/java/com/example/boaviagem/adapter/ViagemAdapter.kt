@@ -1,22 +1,15 @@
 package com.example.boaviagem.adapter
 //
 import android.content.Context
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.boaviagem.R
-import com.example.boaviagem.database.AppDatabase
 import com.example.boaviagem.domains.Viagem
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ViagemAdapter(val item: List<Viagem>) : RecyclerView.Adapter<ViagemAdapter.ViewHolder>() {
 

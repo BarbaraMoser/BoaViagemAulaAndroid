@@ -16,9 +16,8 @@ class GastoAdapter(val item: List<Gasto>) : RecyclerView.Adapter<GastoAdapter.Vi
     var onItemClick: ((Gasto) -> Unit)? = null
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private val descricao_gasto: TextView =
-            view.findViewById<TextView>(R.id.text_descricao_gasto)
-        private val valor_gasto: TextView = view.findViewById<TextView>(R.id.text_valor_gasto)
+        private val descricao: TextView = view.findViewById<TextView>(R.id.text_descricao_gasto)
+        private val valor: TextView = view.findViewById<TextView>(R.id.text_valor_gasto)
 
         init {
             view.findViewById<CardView>(R.id.item_gastos_card_view).setOnClickListener {
@@ -27,13 +26,13 @@ class GastoAdapter(val item: List<Gasto>) : RecyclerView.Adapter<GastoAdapter.Vi
         }
 
         fun bind(g: Gasto) {
-            descricao_gasto.text = g.tipo
-            valor_gasto.text = g.valor.toString()
+            descricao.text = g.descricao
+            valor.text = g.valor.toString()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_viagem, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_gastos, parent, false)
         return ViewHolder(view)
     }
 

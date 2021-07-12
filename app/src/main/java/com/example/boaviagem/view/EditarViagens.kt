@@ -45,7 +45,7 @@ class EditarViagens(viagem: Viagem) : Fragment() {
         }
 
         view.findViewById<Button>(R.id.listar_gastos).setOnClickListener {
-            listar_gastos(view)
+            gastos(view)
         }
 
         view.findViewById<Button>(R.id.voltar).setOnClickListener {
@@ -100,7 +100,7 @@ class EditarViagens(viagem: Viagem) : Fragment() {
         }
     }
 
-    fun listar_gastos(view: View) {
+    fun gastos(view: View) {
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(
