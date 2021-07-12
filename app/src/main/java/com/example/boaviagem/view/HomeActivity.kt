@@ -38,7 +38,7 @@ class HomeActivity(id_usuario: String) : Fragment() {
         return view
     }
 
-    @SuppressLint("ResourceType")
+    @SuppressLint("ResourceType", "SetTextI18n")
     fun buscar_viagens(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.lista_viagens)
 

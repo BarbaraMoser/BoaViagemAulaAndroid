@@ -19,6 +19,6 @@ interface GastoDao {
     @Query("select * from Gasto where id_viagem = :id_viagem order by tipo asc")
     fun getGastos(id_viagem: String): List<Gasto>
 
-    @Query("select * from Gasto where id=:id")
-    fun getViagemById(id: Int): Gasto
+    @Query("select sum(valor) from Gasto where id_viagem = :id_viagem")
+    fun getSomaGastos(id_viagem: String): Double
 }

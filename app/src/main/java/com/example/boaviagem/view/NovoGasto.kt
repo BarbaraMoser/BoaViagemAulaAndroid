@@ -21,11 +21,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NovoGasto(viagem: Viagem) : Fragment() {
+class NovoGasto(private var viagem: Viagem) : Fragment() {
 
     private lateinit var ctx: Context
     private var id_viagem: String = viagem.id
-    private var viagem: Viagem = viagem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

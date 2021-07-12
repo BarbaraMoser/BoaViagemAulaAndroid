@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.cardview.widget.CardView
-import androidx.core.view.isVisible
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,10 +21,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListaGastos(viagem: Viagem) : Fragment() {
+class ListaGastos(private var viagem: Viagem) : Fragment() {
     private lateinit var ctx: Context
-    private var id_usuario: String = viagem.id_usuario
-    private var viagem: Viagem = viagem
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -36,29 +33,27 @@ class ListaGastos(viagem: Viagem) : Fragment() {
         val view = inflater.inflate(R.layout.activity_lista_gastos, container, false)
 
         buscar_gastos(view)
+        view.findViewById<Button>(R.id.adicionar_gasto).setOnClickListener {
+            adicionar_gasto(view)
+        }
 
         return view
     }
 
-    @SuppressLint("ResourceType")
+    @SuppressLint("ResourceType", "SetTextI18n")
     fun buscar_gastos(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.lista_gastos)
-        val botao = view.findViewById<Button>(R.id.adicionar_gasto)
 
         GlobalScope.launch(Dispatchers.Main) {
             val gastos = withContext(Dispatchers.IO) {
                 AppDatabase.getInstance(requireContext()).gastoDao().getGastos(viagem.id)
             }
+
             if (gastos.isEmpty()) {
                 val sem_gastos = view.findViewById<TextView>(R.id.sem_gastos)
                 sem_gastos.text = "Não há gastos cadastrados"
-                botao.isVisible = true
-                view.findViewById<Button>(R.id.adicionar_gasto).setOnClickListener {
-                    adicionar_gasto(view)
-                }
-            } else {
-                botao.isVisible = false
             }
+
             val adapter = GastoAdapter(gastos)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())

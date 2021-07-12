@@ -9,7 +9,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.boaviagem.R
+import com.example.boaviagem.database.AppDatabase
 import com.example.boaviagem.domains.Viagem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ViagemAdapter(val item: List<Viagem>) : RecyclerView.Adapter<ViagemAdapter.ViewHolder>() {
 
@@ -20,14 +25,17 @@ class ViagemAdapter(val item: List<Viagem>) : RecyclerView.Adapter<ViagemAdapter
         private val tipo_viagem: TextView = view.findViewById<TextView>(R.id.text_tipo_viagem)
         private val destino: TextView = view.findViewById<TextView>(R.id.text_destino)
         private val chegada: TextView = view.findViewById<TextView>(R.id.text_chegada)
+        private val gastos: TextView = view.findViewById<TextView>(R.id.text_total_gastos)
 
         init {
             view.findViewById<CardView>(R.id.item_viagem_card_view).setOnClickListener {
                 onItemClick?.invoke(item[adapterPosition])
             }
+            ctx = view.context!!
         }
 
         fun bind(v: Viagem) {
+
             if (v.tipo.toUpperCase() == "LAZER") {
                 view.findViewById<ImageView>(R.id.imagem_tipo_viagem).apply {
                     setImageResource(R.drawable.lazer_icon)
@@ -40,6 +48,13 @@ class ViagemAdapter(val item: List<Viagem>) : RecyclerView.Adapter<ViagemAdapter
             tipo_viagem.text = v.tipo
             destino.text = v.destino
             chegada.text = v.data_chegada
+
+            GlobalScope.launch(Dispatchers.Main) {
+                val gastos_salvos = withContext(Dispatchers.IO) {
+                    AppDatabase.getInstance(ctx).gastoDao().getSomaGastos(v.id)
+                }
+                gastos.text = String.format("%.2f", gastos_salvos)
+            }
         }
     }
 

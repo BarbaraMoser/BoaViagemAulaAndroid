@@ -77,6 +77,26 @@
             android:layout_column="2"
             android:layout_row="3"
             android:gravity="start"/>
+
+
+<!--        TOTAL GASTOS-->
+        <TextView
+            android:id="@+id/total_gastos_salvos"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:gravity="start"
+            android:padding="5dp"
+            android:text="@string/total_gastos"/>
+
+        <TextView
+            android:id="@+id/text_total_gastos"
+            android:layout_width="234dp"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:layout_row="4"
+            android:gravity="start"/>
     </GridLayout>
 
 

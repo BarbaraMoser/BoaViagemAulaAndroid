@@ -13,7 +13,7 @@ import com.example.boaviagem.domains.Viagem
 
 @Database(
     entities = arrayOf(Usuario::class, Viagem::class, Gasto::class),
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

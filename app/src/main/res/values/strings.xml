@@ -16,4 +16,5 @@
     <string name="salvar">Salvar</string>
     <string name="gastos">Gastos</string>
     <string name="adicionar_gasto">Adicionar gasto</string>
+    <string name="total_gastos">Total Gastos</string>
 </resources>
